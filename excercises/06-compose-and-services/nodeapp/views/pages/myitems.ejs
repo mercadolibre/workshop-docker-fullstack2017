@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="container">
+  <div class="container">
+    <div class="row" id="result">
+    </div>
+  </div>
+</div>
+
+<script>
+$.getJSON("/api/items",
+  function(data) {
+    if(!data || data.length == 0) {
+      $("#result").html("<h1>No Hay Resultados</h1>")
+    }else{
+
+      data.forEach(function(element) {
+        items[element.id] = element;
+        addItemRow($("#result"),element,false,true)
+      })
+    }
+  })
+</script>
+<% include ../partials/footer %>

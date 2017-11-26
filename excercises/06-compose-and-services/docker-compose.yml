@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: start-dev
+    ports:
+      - "5000"
+    environment:
+      REDIS_HOST: redis
+    depends_on:
+      - redis
+    volumes:
+      - ./nodeapp:/app
+  redis:
+    image: redis:4.0
+    command: --appendonly yes
+    volumes:
+      - ./data:/data

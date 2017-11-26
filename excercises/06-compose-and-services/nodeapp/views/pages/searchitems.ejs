@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+      <div class="col-5">
+        <input id="search-input" class="form-control" name="search-input" value="bamby" />
+      </div>
+      <div class="col-1">
+        <button id="search-button" type="button" class="btn btn-dark" name="search">
+          Buscar
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" id="result">
+      </div>
+    </div>
+</div>
+
+<script>
+
+
+  function search() {
+    $.getJSON("https://api.mercadolibre.com/sites/MLA/search?q="+$("#search-input").val(),
+      function(data) {
+        if(!data || data.results.length == 0) {
+          $("#result").html("<h1>No Hay Resultados</h1>")
+        }else{
+          $("#result").html("")
+          data.results.forEach(function(element) {
+            items[element.id] = element;
+            addItemRow($("#result"),element,true,false)
+          })
+        }
+      })
+  }
+  $("#search-button").bind("click",search)
+  $("#search-input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+      search()
+    }
+});
+</script>
+
+<% include ../partials/footer %>

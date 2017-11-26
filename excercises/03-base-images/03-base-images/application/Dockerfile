@@ -1,0 +1,1 @@
+FROM mynginxbase:latest
