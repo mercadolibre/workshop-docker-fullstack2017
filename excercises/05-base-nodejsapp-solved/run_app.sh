@@ -10,5 +10,5 @@ fi
 if [[ "$1" == "start-dev" ]]; then
   npm run $1
 else
-  npm run $1
+  npm $1
 fi
