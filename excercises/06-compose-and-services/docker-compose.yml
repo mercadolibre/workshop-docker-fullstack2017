@@ -4,7 +4,7 @@ services:
     build: .
     command: start-dev
     ports:
-      - "5000"
+      - "5000:5000"
     environment:
       REDIS_HOST: redis
     depends_on:
